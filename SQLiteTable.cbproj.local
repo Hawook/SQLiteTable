@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.952,C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Project1.cbproj=C:\Users\Bryak\Documents\GitHub\SQLiteTable\SQLiteTable.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.044,C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Unit1.h=C:\Users\Bryak\Documents\GitHub\SQLiteTable\Unit1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.453,=C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.951,=C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.048,C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=C:\Users\Bryak\Documents\GitHub\SQLiteTable\SQLiteTablePCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.044,C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Unit1.h=C:\Users\Bryak\Documents\GitHub\SQLiteTable\Unit1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.044,C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Bryak\Documents\GitHub\SQLiteTable\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.022,=C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.044,C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Unit1.cpp=C:\Users\Bryak\Documents\GitHub\SQLiteTable\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.044,C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Bryak\Documents\GitHub\SQLiteTable\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.498,=C:\Users\Bryak\Documents\GitHub\FS-Check-clone\FSDll\FSDLL.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.952,C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Project1.cbproj=C:\Users\Bryak\Documents\GitHub\SQLiteTable\SQLiteTable.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.022,=C:\Users\Bryak\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
   </Transactions>
 </BorlandProject>

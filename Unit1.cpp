@@ -22,6 +22,12 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::OpenButtonClick(TObject *Sender)
 {
 	VSTree -> Clear(); // очистка дерева
+	sqlite3 *DB = NULL;
+	if (sqlite3_open("history.sqlite", &DB)) {
+		LabelStatus->Caption = "Error";
+	}
+	sqlite3_stmt *pullStatement; // возвращаемое значение
+	const char *sqlSelect = "select * from urls"; // SQL-запрос вывода таблицы
 }
 void __fastcall TForm1::ClearAllButtonClick(TObject *Sender)
 {
