@@ -54,15 +54,26 @@ void __fastcall TForm1::OpenButtonClick(TObject *Sender)
 }
 void __fastcall TForm1::ClearAllButtonClick(TObject *Sender)
 {
-	VSTree -> Clear(); // очистка дерева
+	//VSTree -> Clear(); // очистка дерева
+    sqlite3* DB;
+	sqlite3_open("history.sqlite", &DB);
+	const char *sqlRemoveAll = "delete from urls";
+	char *errorMsg;
+	int result = sqlite3_exec(DB, sqlRemoveAll, NULL, NULL, &errorMsg);
+	sqlite3_close(DB);
+	if (result == SQLITE_OK)
+	{
+		VSTree -> BeginUpdate();
+		VSTree -> Clear();
+		VSTree -> EndUpdate();
+	}
 }
 void __fastcall TForm1::RemoveButtonClick(TObject *Sender)
 {
 	VSTree -> Clear(); // очистка дерева
 }
 void __fastcall TForm1::VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Node,
-          TColumnIndex Column, TVSTTextType TextType, UnicodeString &CellText)
-
+		  TColumnIndex Column, TVSTTextType TextType, UnicodeString &CellText)
 {
 	if(!Node) return;
 	VSTStruct *nodeData = (VSTStruct*)Sender->GetNodeData(Node);
