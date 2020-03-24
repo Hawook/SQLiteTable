@@ -44,7 +44,7 @@ void __fastcall TForm1::OpenButtonClick(TObject *Sender)
 			VSTStruct *nodeData = (VSTStruct*)VSTree->GetNodeData(entryNode);
 			nodeData->id = sqlite3_column_int(pullStatement, 0);
 			nodeData->url  = (wchar_t*)sqlite3_column_text16(pullStatement, 1);
-			nodeData->history.sqlitetitle  = (wchar_t*)sqlite3_column_text16(pullStatement, 2);
+			nodeData->title  = (wchar_t*)sqlite3_column_text16(pullStatement, 2);
 			nodeData->visit_count = sqlite3_column_int(pullStatement, 3);
 		}
 		VSTree->EndUpdate(); // отрисовка таблицы
@@ -66,20 +66,22 @@ void __fastcall TForm1::ClearAllButtonClick(TObject *Sender)
 		VSTree -> Clear();
 		VSTree -> EndUpdate();
 	}
-	else
-	LabelStatus->Caption = "Возникла ошибка при очистке таблицы";
+	else LabelStatus->Caption = "Возникла ошибка при очистке таблицы";
 }
 void __fastcall TForm1::RemoveButtonClick(TObject *Sender)
 {
-	//VSTree -> Clear(); // очистка дерева
-    int selectedRowID = ((VSTStruct*)VSTree->GetNodeData(VSTree->FocusedNode))->id;
-	const char *sqlRemoveRow = ("delete from urls where id=" + std::to_string(selectedRowID)).c_str();
-	sqlite3* DB;
-	sqlite3_open("history.sqlite", &DB);
-	char *errorMsg;
-	sqlite3_exec(DB, sqlRemoveRow, NULL, NULL, &errorMsg); // SQL-запрос на удаление в БД
-	sqlite3_close(DB);
-	VSTree->DeleteSelectedNodes(); // удаление из представления
+	if (VSTree->FocusedNode != NULL) // если выбрана хотя бы одна строка
+	{
+		int selectedRowID = ((VSTStruct*)VSTree->GetNodeData(VSTree->FocusedNode))->id;
+		const char *sqlRemoveRow = ("delete from urls where id=" + std::to_string(selectedRowID)).c_str();
+		sqlite3* DB;
+		sqlite3_open("history.sqlite", &DB);
+		char *errorMsg;
+		sqlite3_exec(DB, sqlRemoveRow, NULL, NULL, &errorMsg); // SQL-запрос на удаление в БД
+		sqlite3_close(DB);
+		VSTree->DeleteSelectedNodes(); // удаление из представления
+	}
+	else LabelStatus->Caption = "Для удаления строки необходимо ее выделить с помощью ЛКМ";
 }
 void __fastcall TForm1::VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Node,
 		  TColumnIndex Column, TVSTTextType TextType, UnicodeString &CellText)
