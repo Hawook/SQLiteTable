@@ -67,11 +67,19 @@ void __fastcall TForm1::ClearAllButtonClick(TObject *Sender)
 		VSTree -> EndUpdate();
 	}
 	else
-	LabelStatus->Caption = "Error";
+	LabelStatus->Caption = "Возникла ошибка при очистке таблицы";
 }
 void __fastcall TForm1::RemoveButtonClick(TObject *Sender)
 {
-	VSTree -> Clear(); // очистка дерева
+	//VSTree -> Clear(); // очистка дерева
+    int selectedRowID = ((VSTStruct*)VSTree->GetNodeData(VSTree->FocusedNode))->id;
+	const char *sqlRemoveRow = ("delete from urls where id=" + std::to_string(selectedRowID)).c_str();
+	sqlite3* DB;
+	sqlite3_open("history.sqlite", &DB);
+	char *errorMsg;
+	sqlite3_exec(DB, sqlRemoveRow, NULL, NULL, &errorMsg); // SQL-запрос на удаление в БД
+	sqlite3_close(DB);
+	VSTree->DeleteSelectedNodes(); // удаление из представления
 }
 void __fastcall TForm1::VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Node,
 		  TColumnIndex Column, TVSTTextType TextType, UnicodeString &CellText)
