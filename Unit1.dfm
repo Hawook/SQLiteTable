@@ -65,6 +65,9 @@ object Form1: TForm1
     Width = 863
     Height = 266
     Header.AutoSizeIndex = 0
+    Header.Height = 10
+    Header.MaxHeight = 10
+    Header.Options = [hoColumnResize, hoShowSortGlyphs, hoVisible]
     TabOrder = 3
     TreeOptions.SelectionOptions = [toFullRowSelect]
     OnGetText = VSTreeGetText
@@ -72,18 +75,22 @@ object Form1: TForm1
       item
         Position = 0
         Text = 'URL'
+        Width = 44
       end
       item
         Position = 1
         Text = 'Title'
+        Width = 337
       end
       item
         Position = 2
         Text = 'Visited On'
+        Width = 455
       end
       item
         Position = 3
         Text = 'Visit Count'
+        Width = 19
       end>
   end
 end
