@@ -54,7 +54,6 @@ void __fastcall TForm1::OpenButtonClick(TObject *Sender)
 }
 void __fastcall TForm1::ClearAllButtonClick(TObject *Sender)
 {
-	//VSTree -> Clear(); // очистка дерева
     sqlite3* DB;
 	sqlite3_open("history.sqlite", &DB);
 	const char *sqlRemoveAll = "delete from urls";
@@ -67,6 +66,8 @@ void __fastcall TForm1::ClearAllButtonClick(TObject *Sender)
 		VSTree -> Clear();
 		VSTree -> EndUpdate();
 	}
+	else
+	LabelStatus->Caption = "Error";
 }
 void __fastcall TForm1::RemoveButtonClick(TObject *Sender)
 {
